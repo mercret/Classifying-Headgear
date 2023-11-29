@@ -8,10 +8,10 @@ RESOLUTION = (1920, 1080)
 
 
 class House(Enum):
-    GRYFFINDOR = 1
-    RAVENCLAW = 2
-    SLYTHERIN = 3
-    HUFFLEPUFF = 4
+    Griffoendor = 1
+    Ravenklauw = 2
+    Zwadderich = 3
+    Huffelpuf = 4
 
 HOUSE_COLORS = {House(1): (188, 7, 7), House(2): (73, 73, 221),
                 House(3): (11, 140, 11), House(4): (247, 247, 51)}
@@ -264,7 +264,9 @@ if __name__ == "__main__":
     js = json.load(f)
     f.close()
     house_scores = {}
-    for house, score in js.items():
-        house_scores[House[house]] = score
+    for house in js['departments']:
+        house_scores[House[house['name']]] = house['score']
+    # for house, score in js.items():
+    #     house_scores[House[house]] = score
     print(house_scores)
     run(house_scores)
